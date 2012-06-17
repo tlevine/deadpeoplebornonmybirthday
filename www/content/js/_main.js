@@ -17,7 +17,7 @@ window.death = (function(){
   };
 
   death.table = function(d){
-    document.write(d);
+    console.log(d);
   };
 
   death.plot = function(d){
