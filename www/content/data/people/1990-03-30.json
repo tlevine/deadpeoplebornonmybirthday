@@ -1,6 +1,10 @@
 [
   {
     "ssn": "0124124",
-    "first": "Bob"
+    "first": "Bob",
+    "middle": "O",
+    "last": "B",
+    "date_of_death": "2003-03-03",
+    "state": "OK"
   }
 ]
