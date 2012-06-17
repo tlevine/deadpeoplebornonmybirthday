@@ -1,4 +1,5 @@
 # nanoc/project directories to ignore
+crash.log
 .sass-cache
 .rvmrc
 output

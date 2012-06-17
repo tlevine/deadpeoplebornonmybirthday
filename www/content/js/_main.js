@@ -20,13 +20,26 @@ $(function(){
   death.render_dead_people = function(datestamp){
     // Only do something if there is a datestamp.
     if (datestamp != null){
-      alert(datestamp);
+      $.get('/data/people/' + death.DATESTAMP + '.json', function(d){
+        death.plot(d);
+      });
+      $.get('/data/table/' + death.DATESTAMP + '.json', function(d){
+        death.table(d);
+      });
     };
+  };
+
+  death.table = function(d){
+    console.log(d);
+  };
+
+  death.plot = function(d){
+    console.log(d);
   };
 
   death.main = function(){
     death.render_dead_people(death.DATESTAMP);
-  }
+  };
 
   death.main()
 })
