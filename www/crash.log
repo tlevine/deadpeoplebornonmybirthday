@@ -1,8 +1,20 @@
-Crashlog created at 2012-06-17 16:42:50 -0400
+Crashlog created at 2012-06-17 17:18:50 -0400
 
 === MESSAGE:
 
-Nanoc::Errors::CannotLayoutBinaryItem: The “{rep.item.identifier}” item (rep “default”) cannot be laid out because it is a binary item. If you are getting this error for an item that should be textual instead of binary, make sure that its extension is included in the text_extensions array in the site configuration.
+ExecJS::ProgramError: Unexpected token: eof (undefined) (line: 58, col: 1, pos: 1325)
+
+Error
+    at new JS_Parse_Error (/tmp/execjs20120617-32210-ucnzwc.js:3096:22)
+    at js_error (/tmp/execjs20120617-32210-ucnzwc.js:3104:15)
+    at croak (/tmp/execjs20120617-32210-ucnzwc.js:3557:17)
+    at token_error (/tmp/execjs20120617-32210-ucnzwc.js:3564:17)
+    at unexpected (/tmp/execjs20120617-32210-ucnzwc.js:3570:17)
+    at block_ (/tmp/execjs20120617-32210-ucnzwc.js:3821:40)
+    at /tmp/execjs20120617-32210-ucnzwc.js:3801:43
+    at /tmp/execjs20120617-32210-ucnzwc.js:3805:28
+    at /tmp/execjs20120617-32210-ucnzwc.js:3935:43
+    at maybe_unary (/tmp/execjs20120617-32210-ucnzwc.js:4028:27)
 
 === COMPILATION STACK:
 
@@ -10,47 +22,56 @@ Nanoc::Errors::CannotLayoutBinaryItem: The “{rep.item.identifier}” item (rep
 
 === BACKTRACE:
 
-  0. /usr/lib/ruby/gems/1.9.1/gems/nanoc-3.4.0/lib/nanoc/base/result_data/item_rep.rb:386:in `layout'
-  1. /usr/lib/ruby/gems/1.9.1/gems/nanoc-3.4.0/lib/nanoc/base/compilation/item_rep_proxy.rb:69:in `layout'
-  2. /usr/lib/ruby/gems/1.9.1/gems/nanoc-3.4.0/lib/nanoc/base/compilation/rule_context.rb:67:in `layout'
-  3. ./Rules:43:in `block in load'
-  4. /usr/lib/ruby/gems/1.9.1/gems/nanoc-3.4.0/lib/nanoc/base/compilation/rule.rb:68:in `instance_eval'
-  5. /usr/lib/ruby/gems/1.9.1/gems/nanoc-3.4.0/lib/nanoc/base/compilation/rule.rb:68:in `apply_to'
-  6. /usr/lib/ruby/gems/1.9.1/gems/nanoc-3.4.0/lib/nanoc/base/compilation/compiler.rb:381:in `compile_rep'
-  7. /usr/lib/ruby/gems/1.9.1/gems/nanoc-3.4.0/lib/nanoc/base/compilation/compiler.rb:337:in `block in compile_reps'
-  8. /usr/lib/ruby/gems/1.9.1/gems/nanoc-3.4.0/lib/nanoc/base/compilation/compiler.rb:330:in `loop'
-  9. /usr/lib/ruby/gems/1.9.1/gems/nanoc-3.4.0/lib/nanoc/base/compilation/compiler.rb:330:in `compile_reps'
-  10. /usr/lib/ruby/gems/1.9.1/gems/nanoc-3.4.0/lib/nanoc/base/compilation/compiler.rb:85:in `run'
-  11. /usr/lib/ruby/gems/1.9.1/gems/nanoc-3.4.0/lib/nanoc/base/source_data/site.rb:57:in `compile'
-  12. /usr/lib/ruby/gems/1.9.1/gems/nanoc-3.4.0/lib/nanoc/cli/commands/watch.rb:42:in `block in run'
-  13. /usr/lib/ruby/gems/1.9.1/gems/fssm-0.2.9/lib/fssm/path.rb:73:in `call'
-  14. /usr/lib/ruby/gems/1.9.1/gems/fssm-0.2.9/lib/fssm/path.rb:73:in `run_callback'
-  15. /usr/lib/ruby/gems/1.9.1/gems/fssm-0.2.9/lib/fssm/path.rb:55:in `callback_action'
-  16. /usr/lib/ruby/gems/1.9.1/gems/fssm-0.2.9/lib/fssm/path.rb:35:in `update'
-  17. /usr/lib/ruby/gems/1.9.1/gems/fssm-0.2.9/lib/fssm/state/file.rb:19:in `refresh'
-  18. /usr/lib/ruby/gems/1.9.1/gems/fssm-0.2.9/lib/fssm/backends/polling.rb:17:in `block (2 levels) in run'
-  19. /usr/lib/ruby/gems/1.9.1/gems/fssm-0.2.9/lib/fssm/backends/polling.rb:17:in `each'
-  20. /usr/lib/ruby/gems/1.9.1/gems/fssm-0.2.9/lib/fssm/backends/polling.rb:17:in `block in run'
-  21. /usr/lib/ruby/gems/1.9.1/gems/fssm-0.2.9/lib/fssm/backends/polling.rb:15:in `loop'
-  22. /usr/lib/ruby/gems/1.9.1/gems/fssm-0.2.9/lib/fssm/backends/polling.rb:15:in `run'
-  23. /usr/lib/ruby/gems/1.9.1/gems/fssm-0.2.9/lib/fssm/monitor.rb:26:in `run'
-  24. /usr/lib/ruby/gems/1.9.1/gems/nanoc-3.4.0/lib/nanoc/cli/commands/watch.rb:83:in `run'
-  25. /usr/lib/ruby/gems/1.9.1/gems/nanoc-3.4.0/lib/nanoc/cli/command_runner.rb:14:in `block in call'
-  26. /usr/lib/ruby/gems/1.9.1/gems/nanoc-3.4.0/lib/nanoc/cli/error_handler.rb:63:in `handle_while'
-  27. /usr/lib/ruby/gems/1.9.1/gems/nanoc-3.4.0/lib/nanoc/cli/error_handler.rb:26:in `handle_while'
-  28. /usr/lib/ruby/gems/1.9.1/gems/nanoc-3.4.0/lib/nanoc/cli/command_runner.rb:13:in `call'
-  29. /usr/lib/ruby/gems/1.9.1/gems/cri-2.3.0/lib/cri/command_dsl.rb:185:in `block in runner'
-  30. /usr/lib/ruby/gems/1.9.1/gems/cri-2.3.0/lib/cri/command.rb:296:in `call'
-  31. /usr/lib/ruby/gems/1.9.1/gems/cri-2.3.0/lib/cri/command.rb:296:in `run_this'
-  32. /usr/lib/ruby/gems/1.9.1/gems/cri-2.3.0/lib/cri/command.rb:249:in `run'
-  33. /usr/lib/ruby/gems/1.9.1/gems/cri-2.3.0/lib/cri/command.rb:262:in `run'
-  34. /usr/lib/ruby/gems/1.9.1/gems/nanoc-3.4.0/lib/nanoc/cli.rb:47:in `block in run'
+  0. /usr/lib/ruby/gems/1.9.1/gems/execjs-1.4.0/lib/execjs/external_runtime.rb:68:in `extract_result'
+  1. /usr/lib/ruby/gems/1.9.1/gems/execjs-1.4.0/lib/execjs/external_runtime.rb:28:in `block in exec'
+  2. /usr/lib/ruby/gems/1.9.1/gems/execjs-1.4.0/lib/execjs/external_runtime.rb:41:in `compile_to_tempfile'
+  3. /usr/lib/ruby/gems/1.9.1/gems/execjs-1.4.0/lib/execjs/external_runtime.rb:27:in `exec'
+  4. /usr/lib/ruby/gems/1.9.1/gems/uglifier-1.2.4/lib/uglifier.rb:101:in `compile'
+  5. /usr/lib/ruby/gems/1.9.1/gems/nanoc-3.4.0/lib/nanoc/filters/uglify_js.rb:38:in `run'
+  6. /usr/lib/ruby/gems/1.9.1/gems/nanoc-3.4.0/lib/nanoc/base/result_data/item_rep.rb:343:in `filter'
+  7. /usr/lib/ruby/gems/1.9.1/gems/nanoc-3.4.0/lib/nanoc/base/compilation/item_rep_proxy.rb:47:in `filter'
+  8. /usr/lib/ruby/gems/1.9.1/gems/nanoc-3.4.0/lib/nanoc/base/compilation/rule_context.rb:54:in `filter'
+  9. ./Rules:35:in `block in load'
+  10. /usr/lib/ruby/gems/1.9.1/gems/nanoc-3.4.0/lib/nanoc/base/compilation/rule.rb:68:in `instance_eval'
+  11. /usr/lib/ruby/gems/1.9.1/gems/nanoc-3.4.0/lib/nanoc/base/compilation/rule.rb:68:in `apply_to'
+  12. /usr/lib/ruby/gems/1.9.1/gems/nanoc-3.4.0/lib/nanoc/base/compilation/compiler.rb:381:in `compile_rep'
+  13. /usr/lib/ruby/gems/1.9.1/gems/nanoc-3.4.0/lib/nanoc/base/compilation/compiler.rb:337:in `block in compile_reps'
+  14. /usr/lib/ruby/gems/1.9.1/gems/nanoc-3.4.0/lib/nanoc/base/compilation/compiler.rb:330:in `loop'
+  15. /usr/lib/ruby/gems/1.9.1/gems/nanoc-3.4.0/lib/nanoc/base/compilation/compiler.rb:330:in `compile_reps'
+  16. /usr/lib/ruby/gems/1.9.1/gems/nanoc-3.4.0/lib/nanoc/base/compilation/compiler.rb:85:in `run'
+  17. /usr/lib/ruby/gems/1.9.1/gems/nanoc-3.4.0/lib/nanoc/base/source_data/site.rb:57:in `compile'
+  18. /usr/lib/ruby/gems/1.9.1/gems/nanoc-3.4.0/lib/nanoc/cli/commands/watch.rb:42:in `block in run'
+  19. /usr/lib/ruby/gems/1.9.1/gems/fssm-0.2.9/lib/fssm/path.rb:73:in `call'
+  20. /usr/lib/ruby/gems/1.9.1/gems/fssm-0.2.9/lib/fssm/path.rb:73:in `run_callback'
+  21. /usr/lib/ruby/gems/1.9.1/gems/fssm-0.2.9/lib/fssm/path.rb:55:in `callback_action'
+  22. /usr/lib/ruby/gems/1.9.1/gems/fssm-0.2.9/lib/fssm/path.rb:35:in `update'
+  23. /usr/lib/ruby/gems/1.9.1/gems/fssm-0.2.9/lib/fssm/state/directory.rb:39:in `block in modified'
+  24. /usr/lib/ruby/gems/1.9.1/gems/fssm-0.2.9/lib/fssm/state/directory.rb:37:in `each'
+  25. /usr/lib/ruby/gems/1.9.1/gems/fssm-0.2.9/lib/fssm/state/directory.rb:37:in `modified'
+  26. /usr/lib/ruby/gems/1.9.1/gems/fssm-0.2.9/lib/fssm/state/directory.rb:18:in `refresh'
+  27. /usr/lib/ruby/gems/1.9.1/gems/fssm-0.2.9/lib/fssm/backends/polling.rb:17:in `block (2 levels) in run'
+  28. /usr/lib/ruby/gems/1.9.1/gems/fssm-0.2.9/lib/fssm/backends/polling.rb:17:in `each'
+  29. /usr/lib/ruby/gems/1.9.1/gems/fssm-0.2.9/lib/fssm/backends/polling.rb:17:in `block in run'
+  30. /usr/lib/ruby/gems/1.9.1/gems/fssm-0.2.9/lib/fssm/backends/polling.rb:15:in `loop'
+  31. /usr/lib/ruby/gems/1.9.1/gems/fssm-0.2.9/lib/fssm/backends/polling.rb:15:in `run'
+  32. /usr/lib/ruby/gems/1.9.1/gems/fssm-0.2.9/lib/fssm/monitor.rb:26:in `run'
+  33. /usr/lib/ruby/gems/1.9.1/gems/nanoc-3.4.0/lib/nanoc/cli/commands/watch.rb:83:in `run'
+  34. /usr/lib/ruby/gems/1.9.1/gems/nanoc-3.4.0/lib/nanoc/cli/command_runner.rb:14:in `block in call'
   35. /usr/lib/ruby/gems/1.9.1/gems/nanoc-3.4.0/lib/nanoc/cli/error_handler.rb:63:in `handle_while'
   36. /usr/lib/ruby/gems/1.9.1/gems/nanoc-3.4.0/lib/nanoc/cli/error_handler.rb:26:in `handle_while'
-  37. /usr/lib/ruby/gems/1.9.1/gems/nanoc-3.4.0/lib/nanoc/cli.rb:44:in `run'
-  38. /usr/lib/ruby/gems/1.9.1/gems/nanoc-3.4.0/bin/nanoc:19:in `<top (required)>'
-  39. /usr/bin/nanoc:23:in `load'
-  40. /usr/bin/nanoc:23:in `<main>'
+  37. /usr/lib/ruby/gems/1.9.1/gems/nanoc-3.4.0/lib/nanoc/cli/command_runner.rb:13:in `call'
+  38. /usr/lib/ruby/gems/1.9.1/gems/cri-2.3.0/lib/cri/command_dsl.rb:185:in `block in runner'
+  39. /usr/lib/ruby/gems/1.9.1/gems/cri-2.3.0/lib/cri/command.rb:296:in `call'
+  40. /usr/lib/ruby/gems/1.9.1/gems/cri-2.3.0/lib/cri/command.rb:296:in `run_this'
+  41. /usr/lib/ruby/gems/1.9.1/gems/cri-2.3.0/lib/cri/command.rb:249:in `run'
+  42. /usr/lib/ruby/gems/1.9.1/gems/cri-2.3.0/lib/cri/command.rb:262:in `run'
+  43. /usr/lib/ruby/gems/1.9.1/gems/nanoc-3.4.0/lib/nanoc/cli.rb:47:in `block in run'
+  44. /usr/lib/ruby/gems/1.9.1/gems/nanoc-3.4.0/lib/nanoc/cli/error_handler.rb:63:in `handle_while'
+  45. /usr/lib/ruby/gems/1.9.1/gems/nanoc-3.4.0/lib/nanoc/cli/error_handler.rb:26:in `handle_while'
+  46. /usr/lib/ruby/gems/1.9.1/gems/nanoc-3.4.0/lib/nanoc/cli.rb:44:in `run'
+  47. /usr/lib/ruby/gems/1.9.1/gems/nanoc-3.4.0/bin/nanoc:19:in `<top (required)>'
+  48. /usr/bin/nanoc:23:in `load'
+  49. /usr/bin/nanoc:23:in `<main>'
 
 === VERSION INFORMATION:
 
@@ -96,7 +117,7 @@ Running ruby 1.9.3 (2012-04-20) on x86_64-linux with RubyGems 1.8.23.
 
 ANT_HOME => "/usr/share/apache-ant"
 BUNDLE_BIN_PATH => "/home/tlevine/.gem/ruby/1.9.1/gems/bundler-1.1.4/bin/bundle"
-BUNDLE_GEMFILE => "/home/tlevine/Documents/deadpeoplebornonmybirthday/www/nanoc/Gemfile"
+BUNDLE_GEMFILE => "/home/tlevine/Documents/deadpeoplebornonmybirthday/www/Gemfile"
 COLORTERM => "mate-terminal"
 DBUS_SESSION_BUS_ADDRESS => "unix:abstract=/tmp/dbus-7aDadtWU62,guid=c719fe04c8a6603cd968185400000021"
 DESKTOP_SESSION => "mate"
@@ -119,9 +140,9 @@ MATECORBA_SOCKETDIR => "/tmp/matecorba-tlevine"
 MATE_DESKTOP_SESSION_ID => "this-is-deprecated"
 MATE_KEYRING_CONTROL => "/tmp/keyring-Cadgc8"
 MOZ_PLUGIN_PATH => "/usr/lib/mozilla/plugins"
-OLDPWD => "/home/tlevine"
-PATH => "/usr/lib/ruby/gems/1.9.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/vendor_perl:/usr/bin/core_perl:~/bin"
-PWD => "/home/tlevine/Documents/deadpeoplebornonmybirthday/www/nanoc"
+OLDPWD => "/home/tlevine/Documents/deadpeoplebornonmybirthday"
+PATH => "/usr/lib/ruby/gems/1.9.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/bin/vendor_perl:/usr/bin/core_perl:~/bin:~/.gem/ruby/1.9.1/bin"
+PWD => "/home/tlevine/Documents/deadpeoplebornonmybirthday/www"
 RUBYOPT => "-I/home/tlevine/.gem/ruby/1.9.1/gems/bundler-1.1.4/lib -rbundler/setup"
 R_HISTFILE => "/home/tlevine/.Rhistory"
 SESSION_MANAGER => "local/desk:@/tmp/.ICE-unix/850,unix/desk:/tmp/.ICE-unix/850"
@@ -131,7 +152,7 @@ SSH_AGENT_PID => "883"
 SSH_AUTH_SOCK => "/tmp/keyring-Cadgc8/ssh"
 TERM => "screen"
 TMUX => "/tmp//tmux-1000/default,1700,30"
-TMUX_PANE => "%237"
+TMUX_PANE => "%247"
 USER => "tlevine"
 USERNAME => "tlevine"
 WINDOWID => "46173930"
