@@ -4,7 +4,10 @@ from copy import copy
 MIN_BIRTHDAY = datetime.date(1850, 1, 1)
 MAX_BIRTHDAY = datetime.date(2011, 1, 1)
 
-def main(func, wildyears = False, wilddays = False):
+def main(func, wildyears = None, wilddays = None):
+    for year in range(MIN_BIRTHDAY.year, MAX_BIRTHDAY.year + 1):
+        for month in range(1, 12 + 1):
+            _do_wild_day_of_month(func, year, month)
 
 def _do_wild_day_of_month(func, year, month, *args, *kwargs):
     min_birthday = datetime.date(year, month, 1)
