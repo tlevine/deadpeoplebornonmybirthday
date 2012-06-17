@@ -4,7 +4,7 @@
 
 
 
-$(function(){
+window.death = (function(){
   var death = {};
 
   // Get datestamp from URL
@@ -16,30 +16,30 @@ $(function(){
     death.DATESTAMP = null
   };
 
-  // Render the page
-  death.render_dead_people = function(datestamp){
-    // Only do something if there is a datestamp.
-    if (datestamp != null){
-      $.get('/data/people/' + death.DATESTAMP + '.json', function(d){
-        death.plot(d);
-      });
-      $.get('/data/table/' + death.DATESTAMP + '.json', function(d){
-        death.table(d);
-      });
-    };
-  };
-
   death.table = function(d){
-    console.log(d);
+    document.write(d);
   };
 
   death.plot = function(d){
     console.log(d);
   };
 
+  // Render the page
+  death.render_dead_people = function(datestamp){
+    // Only do something if there is a datestamp.
+    if (datestamp != null){
+      $.get('/data/people/' + death.DATESTAMP + '.json', death.plot);
+      $.get('/data/counts/' + death.DATESTAMP + '.json', death.table);
+    };
+  };
+
   death.main = function(){
     death.render_dead_people(death.DATESTAMP);
   };
 
+  return death;
+})();
+
+$(function(){
   death.main()
 })
