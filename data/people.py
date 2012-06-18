@@ -15,7 +15,7 @@ def people(birthday_date):
     for person in m.find({'born_date': birthday}):
         out.append({
             "ssn": person['ssn'],
-            "first": person['forename'],
+            "first": person.get('forename', ''),
             "middle": ' '.join(person['middles']),
             "last": person['surname'],
             "date_of_death": person['died_date'].date().isoformat(),
@@ -28,8 +28,9 @@ def main():
     doc = m.find({'born_date': {'$ne': None}}).sort('born_date').limit(1)[0] 
     min_birthday = doc['born_date'].date()
     max_birthday = datetime.date.today()
-    i = copy(min_birthday)
-    while i <= max_birthday:
+    i = copy(min_birthday) - datetime.timedelta(days=1)
+    while i < max_birthday:
+        i += datetime.timedelta(days=1)
         print(i)
         filename = os.path.join('people', '%s.json' % i.isoformat())
 
@@ -43,7 +44,6 @@ def main():
             f.write(contents)
             f.close()
 
-        i += datetime.timedelta(days=1)
 
 if __name__ == "__main__":
     main()
