@@ -6,5 +6,21 @@
     "last": "B",
     "date_of_death": "2003-03-03",
     "state": "OK"
+  },
+  {
+    "ssn": "0124123",
+    "first": "Jim",
+    "middle": "O",
+    "last": "B",
+    "date_of_death": "2002-03-03",
+    "state": "OK"
+  },
+  {
+    "ssn": "0124121",
+    "first": "Jane",
+    "middle": "O",
+    "last": "B",
+    "date_of_death": "2008-03-03",
+    "state": "OK"
   }
 ]
