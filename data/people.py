@@ -29,8 +29,8 @@ def main():
     min_birthday = doc['born_date'].date()
     max_birthday = datetime.date.today()
     i = copy(min_birthday)
-    while i < max_birthday:
-        i += datetime.timedelta(days=1)
+    while i <= max_birthday:
+        print(i)
         filename = os.path.join('people', '%s.json' % i.isoformat())
 
         # Skip the ones that are finished
@@ -42,6 +42,8 @@ def main():
             f = open(filename, 'w')
             f.write(contents)
             f.close()
+
+        i += datetime.timedelta(days=1)
 
 if __name__ == "__main__":
     main()
