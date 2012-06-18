@@ -38,6 +38,7 @@ window.death = (function(){
       return sprintf(death.table_row_template, person)
     });
     $('#deadpeople > tbody').html(rows.join(''));
+    $('#deadpeople').dataTable();
   };
 
   death.plot = function(d){
