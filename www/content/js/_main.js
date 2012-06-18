@@ -68,27 +68,34 @@ window.death = (function(){
     var thisyear = new Date().getFullYear();
     var max_age = thisyear - new Date(death.DATESTAMP).getFullYear();
 
-    // Allocate histogram list.
+    // Allocate histogram and ticks.
     var ages_hist = [];
+    var ticks = [];
     var i = 0;
+    var by_twos = (parseFloat($('#main').css('width'))/max_age) < 30;
     while (i < max_age){
       ages_hist.push([i, 0]);
+      if (!by_twos || i % 2 == 0){
+        ticks.push([i, i.toString()]);
+      }
       i++;
     }
 
     // Create it.
     i = 0;
     while (i < ages.length){
+     
       ages_hist[ages[i]][1]++;
       i++;
     }
-
+    console.log(ticks);
     $.plot(
       $('#plot'),
       [ages_hist],
       {
         xaxes: [{
-          axisLabel: 'Age at death'
+          axisLabel: 'Age at death',
+          ticks: ticks
         }],
         yaxes: [{
           position: 'left',
