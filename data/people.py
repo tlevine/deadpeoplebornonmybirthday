@@ -1,6 +1,10 @@
-from _birthdayloop import main
+import pymongo
 
-def people(docs):
-    'Given a list of Mongo documents, 
+def people(birthday):
+    'Generate a list of people for a given birthday'
 
-main(
+
+def main():
+    m = pymongo.Connection().middlenames.person
+    m.ensure_index('born_date')
+    min_birthday = m.find().sort('date_of_birth').limit(1)
