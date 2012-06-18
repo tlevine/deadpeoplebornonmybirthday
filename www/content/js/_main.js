@@ -2,7 +2,27 @@
 
 */
 
-
+window.search = (function(){
+  var search = {};
+  search.submit = function(){
+    var datestamp = [
+      $('select#search-year').val(),
+      $('select#search-month').val(),
+      $('select#search-day').val()
+    ].join('-');
+    if (
+        new Date(datestamp) == 'Invalid Date' /* wtf? */ ||
+        $('select#search-year').val()==='' ||
+        $('select#search-month').val()==='' ||
+        $('select#search-day').val()===''
+      ) {
+      $('#error').html('Select a date.');
+    } else {
+      document.location = '/' + datestamp;
+    }
+  };
+  return search;
+})();
 
 window.death = (function(){
   var death = {};
@@ -101,4 +121,5 @@ window.death = (function(){
 
 $(function(){
   death.main()
+  $('#submit').click(search.submit);
 })
