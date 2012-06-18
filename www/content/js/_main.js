@@ -59,7 +59,19 @@ window.death = (function(){
       i++;
     }
 
-    $.plot($('#plot'), [ages_hist]);
+    $.plot(
+      $('#plot'),
+      [ages_hist],
+      {
+        xaxes: [{
+          axisLabel: 'Age at death'
+        }],
+        yaxes: [{
+          position: 'left',
+          axisLabel: 'Number of people'
+        }]
+      }
+    );
   };
 
   // Render the page
