@@ -45,7 +45,11 @@ window.death = (function(){
     var rows = people.map(function(person){
       return sprintf(death.table_row_template, person)});
     $('#deadpeople > tbody').html(rows.join(''));
-    $('#deadpeople').dataTable();
+    var t = $('#deadpeople').dataTable();
+  //$(window).resize(function(){
+  //  t.fnReloadAjax();
+  //  $('#deadpeople').attr('style', '');
+  //});
   };
 
   // Table row template
@@ -108,6 +112,10 @@ window.death = (function(){
         });
         death.table(people);
         death.plot(people);
+    //  $(window).resize(function(){
+    //    $('#plot').html('');
+    //    death.plot(people);
+    //  });
       });
     };
   };
@@ -120,6 +128,14 @@ window.death = (function(){
 })();
 
 $(function(){
-  death.main()
-  $('#submit').click(search.submit);
-})
+  if ($('#plot').length > 0) {
+    death.main();
+    $(window).resize(function(){
+      setTimeout(function(){
+        window.location.href=window.location.href
+     }, 500);
+    });
+  } else {
+    $('#submit').click(search.submit);
+  }
+});
