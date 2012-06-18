@@ -86,10 +86,9 @@ window.death = (function(){
           person.date_of_death = died.getTime();
           return person;
         });
-//      death.table(people);
+        death.table(people);
         death.plot(people);
       });
-//    $.get('/data/counts/' + death.DATESTAMP + '.json', death.plot);
     };
   };
 
