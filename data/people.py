@@ -6,8 +6,11 @@ import datetime
 
 m = pymongo.Connection().middlenames.person
 
-def people(birthday):
+def people(birthday_date):
     'Generate a list of people for a given birthday'
+    # Datetimes can convert to BSON.
+    birthday = datetime.datetime.combine(birthday_date, datetime.time())
+
     out = []
     for person in m.find({'date_of_birth': birthday}):
         out.append({
@@ -22,7 +25,8 @@ def people(birthday):
 
 def main():
     m.ensure_index('born_date')
-    min_birthday = m.find().sort('born_date').limit(1)[0].born_date.date().
+    doc = m.find({'born_date': {'$ne': None}}).sort('born_date').limit(1)[0] 
+    min_birthday = doc['born_date'].date()
     max_birthday = datetime.date.today()
     i = copy(min_birthday)
     while i < max_birthday:
