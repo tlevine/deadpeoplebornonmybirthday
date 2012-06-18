@@ -12,11 +12,11 @@ def people(birthday_date):
     birthday = datetime.datetime.combine(birthday_date, datetime.time())
 
     out = []
-    for person in m.find({'date_of_birth': birthday}):
+    for person in m.find({'born_date': birthday}):
         out.append({
             "ssn": person['ssn'],
             "first": person['forename'],
-            "middle": ' '.join(person[middles]),
+            "middle": ' '.join(person['middles']),
             "last": person['surname'],
             "date_of_death": person['died_date'].date().isoformat(),
             "state": person['state'],
