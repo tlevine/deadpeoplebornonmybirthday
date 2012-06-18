@@ -23,12 +23,7 @@ window.death = (function(){
   // Table-writer
   death.table = function(people){
     var rows = people.map(function(person){
-      var died = new Date(person.date_of_death);
-      person.died = died.toDateString();
-      person.age = Math.floor((died - new Date(death.DATESTAMP))/31536000000);
-      person.date_of_death = died.getTime();
-      return sprintf(death.table_row_template, person)
-    });
+      return sprintf(death.table_row_template, person)});
     $('#deadpeople > tbody').html(rows.join(''));
     $('#deadpeople').dataTable();
   };
@@ -44,15 +39,42 @@ window.death = (function(){
 
   // Plot
   death.plot = function(people){
-    console.log(people);
+    var ages = people.map(function(person){return person.age});
+
+    var thisyear = new Date().getFullYear();
+    var max_age = thisyear - new Date(death.DATESTAMP).getFullYear();
+
+    // Allocate histogram list.
+    var ages_hist = [];
+    var i = 0;
+    while (i < max_age){
+      ages_hist.push([i, 0]);
+      i++;
+    }
+
+    // Create it.
+    i = 0;
+    while (i < ages.length){
+      ages_hist[ages[i]][1]++;
+      i++;
+    }
+
+    $.plot($('#plot'), [ages_hist]);
   };
 
   // Render the page
   death.render_dead_people = function(datestamp){
     // Only do something if there is a datestamp.
     if (datestamp != null){
-      $.get('/data/people/' + death.DATESTAMP + '.json', function(people){
-        death.table(people);
+      $.get('/data/people/' + death.DATESTAMP + '.json', function(people_raw){
+        var people = people_raw.map(function(person){
+          var died = new Date(person.date_of_death);
+          person.died = died.toDateString();
+          person.age = Math.floor((died - new Date(death.DATESTAMP))/31536000000);
+          person.date_of_death = died.getTime();
+          return person;
+        });
+//      death.table(people);
         death.plot(people);
       });
 //    $.get('/data/counts/' + death.DATESTAMP + '.json', death.plot);
