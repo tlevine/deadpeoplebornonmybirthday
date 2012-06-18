@@ -22,7 +22,7 @@ def people(birthday):
 
 def main():
     m.ensure_index('born_date')
-    min_birthday = m.find().sort('date_of_birth').limit(1)
+    min_birthday = m.find().sort('born_date').limit(1)[0].born_date.date().
     max_birthday = datetime.date.today()
     i = copy(min_birthday)
     while i < max_birthday:
@@ -38,3 +38,6 @@ def main():
             f = open(filename, 'w')
             f.write(contents)
             f.close()
+
+if __name__ == "__main__":
+    main()
