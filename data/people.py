@@ -13,14 +13,19 @@ def people(birthday_date):
 
     out = []
     for person in m.find({'born_date': birthday}):
-        out.append({
-            "ssn": person['ssn'],
-            "first": person.get('forename', ''),
-            "middle": ' '.join(person['middles']),
-            "last": person['surname'],
-            "date_of_death": person['died_date'].date().isoformat(),
-            "state": person['state'],
-        })
+        try:
+            out.append({
+                "ssn": person['ssn'],
+                "first": person.get('forename', ''),
+                "middle": ' '.join(person['middles']),
+                "last": person['surname'],
+                "date_of_death": person['died_date'].date().isoformat(),
+                "state": person['state'],
+            })
+        except:
+            f = open('failed_persons', 'a')
+            f.write(person['ssn'])
+            f.close()
     return out
 
 def main():
