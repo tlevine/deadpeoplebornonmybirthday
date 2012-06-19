@@ -46,7 +46,8 @@ window.death = (function(){
       return sprintf(death.table_row_template, person)});
     $('#deadpeople > tbody').html(rows.join(''));
     var t = $('#deadpeople').dataTable({
-      "bJQueryUI": true
+      "bJQueryUI": true,
+      "sDom": '<"H"p>rt<"F"i>l<"clear">'
     });
   //$(window).resize(function(){
   //  t.fnReloadAjax();
@@ -86,7 +87,7 @@ window.death = (function(){
       i++;
     }
     $.plot(
-      $('#plot'),
+      $('#age-plot'),
       [ages_hist],
       {
         xaxes: [{
@@ -115,7 +116,7 @@ window.death = (function(){
         death.table(people);
         death.plot(people);
     //  $(window).resize(function(){
-    //    $('#plot').html('');
+    //    $('#age-plot').html('');
     //    death.plot(people);
     //  });
       });
@@ -130,7 +131,7 @@ window.death = (function(){
 })();
 
 $(function(){
-  if ($('#plot').length > 0) {
+  if ($('#age-plot').length > 0) {
     death.main();
     $(window).resize(function(){
       if ($(this).width() < 960) {     // or $(this).height() for height check
