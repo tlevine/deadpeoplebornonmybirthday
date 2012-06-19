@@ -82,6 +82,10 @@ route %r{/_.+/$} do
   nil # don't route partials
 end
 
+route '/css/images/*/' do
+  item.identifier.chop + '.' + item[:extension]
+end
+
 route '/css/*/' do
   fp = fingerprint(item[:filename])
   item.identifier.chop + fp + '.css'

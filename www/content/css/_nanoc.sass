@@ -11,8 +11,7 @@
 .js #main-no-js
   display: none
 
-html, body
-  height: 100%
+body
   background-color: #EEE
 
 html, body, p, input
@@ -25,6 +24,7 @@ html, body, p, input
   font-weight: 300
 
 header
+  margin: 0
   text-align: center
 
 .main
@@ -64,3 +64,40 @@ a
   height: 240px
   padding: 20px
   background-color: red
+
+*
+  margin: 0
+  padding: 0
+
+::selection
+  background: #F6A828
+
+// Begin sticky footer
+
+html, body
+  height: 100%
+
+body
+  position: relative
+
+footer
+  position: absolute
+  bottom: 0
+  right: 0
+
+// End sticky footer
+
+#links
+  margin: 0
+  padding: 0
+  width: 4.5em
+  color: #EEE
+  background-color: #444
+  float: right
+  list-style: none
+  li
+    float: left
+    width: 1em
+    font-weight: 700
+    padding: 0.25em
+    text-align: center
