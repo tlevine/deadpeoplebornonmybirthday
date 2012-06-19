@@ -47,7 +47,7 @@ window.death = (function(){
     $('#deadpeople > tbody').html(rows.join(''));
     var t = $('#deadpeople').dataTable({
       "bJQueryUI": true,
-      "sDom": '<"H"p>rt<"F"i>l<"clear">'
+//    "sDom": '<"H"p>rtl<"F"i><"clear">'
     });
   //$(window).resize(function(){
   //  t.fnReloadAjax();
