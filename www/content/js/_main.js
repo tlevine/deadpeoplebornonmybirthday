@@ -72,14 +72,9 @@ window.death = (function(){
 
     // Allocate histogram and ticks.
     var ages_hist = [];
-    var ticks = [];
     var i = 0;
-    var by_twos = (parseFloat($('#main').css('width'))/max_age) < 30;
     while (i < max_age){
       ages_hist.push([i, 0]);
-      if (!by_twos || i % 2 == 0){
-        ticks.push([i, i.toString()]);
-      }
       i++;
     }
 
@@ -90,14 +85,12 @@ window.death = (function(){
       ages_hist[ages[i]][1]++;
       i++;
     }
-    console.log(ticks);
     $.plot(
       $('#plot'),
       [ages_hist],
       {
         xaxes: [{
-          axisLabel: 'Age at death',
-          ticks: ticks
+          axisLabel: 'Age at death'
         }],
         yaxes: [{
           position: 'left',
