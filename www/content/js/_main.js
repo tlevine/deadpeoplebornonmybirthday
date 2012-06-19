@@ -65,7 +65,9 @@ window.death = (function(){
   );
 
   // Plot
-  death.plot = function(people){
+  death.stateplot = function(people){
+  }
+  death.ageplot = function(people){
     var ages = people.map(function(person){return person.age});
 
     var thisyear = new Date().getFullYear();
@@ -114,10 +116,11 @@ window.death = (function(){
           return person;
         });
         death.table(people);
-        death.plot(people);
+        death.ageplot(people);
+        death.stateplot(people);
     //  $(window).resize(function(){
     //    $('#age-plot').html('');
-    //    death.plot(people);
+    //    death.ageplot(people);
     //  });
       });
     };
