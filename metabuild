@@ -1,0 +1,16 @@
+#!/bin/sh
+# Avoid committing all of the data to the repository.
+
+tmp=$(mktemp -d)
+cp -R www $tmp
+
+# Generate yaml templates
+
+# Compile
+(
+  cd $tmp/www
+  nanoc compile
+)
+
+# Copy data over
+cp data/people/*.json $tmp/www/output/data/people
