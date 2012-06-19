@@ -79,6 +79,10 @@ window.death = (function(){
       ["VA", 0],  ["WA", 0],  ["WV", 0],  ["WI", 0],  ["WY", 0]
     ]
     var states = people.map(function(person){return person.state});
+    var states_hist =[states_init].concat(states).reduce(
+    function(thestatus, thestate){
+      thestatus[thestate]
+    }); 
   }
   death.ageplot = function(people){
     var ages = people.map(function(person){return person.age});
