@@ -34,8 +34,16 @@
 @include h5bp-chromeframe;
 
 //
-// Your styles here
+// jQuery, DataTable and flot
 //
+@import "jquery-dataTables";
+//@import "jqueryui-smoothness";
+//@import "jqueryui-hotsneaks";
+//@import "jqueryui-";
+//@import "jqueryui-";
+@import "jqueryui-lightness";
+
+// Site styles
 @import "nanoc";
 
 //

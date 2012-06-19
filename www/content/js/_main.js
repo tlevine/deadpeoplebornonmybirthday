@@ -45,7 +45,9 @@ window.death = (function(){
     var rows = people.map(function(person){
       return sprintf(death.table_row_template, person)});
     $('#deadpeople > tbody').html(rows.join(''));
-    var t = $('#deadpeople').dataTable();
+    var t = $('#deadpeople').dataTable({
+      "bJQueryUI": true
+    });
   //$(window).resize(function(){
   //  t.fnReloadAjax();
   //  $('#deadpeople').attr('style', '');
@@ -138,9 +140,11 @@ $(function(){
   if ($('#plot').length > 0) {
     death.main();
     $(window).resize(function(){
-      setTimeout(function(){
-        window.location.href=window.location.href
-     }, 500);
+      if ($(this).width() < 960) {     // or $(this).height() for height check
+        setTimeout(function(){
+          window.location.href=window.location.href
+       }, 500);
+      }
     });
   } else {
     $('#submit').click(search.submit);
