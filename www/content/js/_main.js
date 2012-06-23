@@ -52,12 +52,12 @@ window.death = (function(){
         { "iDataSort": 5, "aTargets": [3] },
         { "iDataSort": 5, "aTargets": [4] }
       ],
-//    "sDom": '<"H"p>rtl<"F"i><"clear">'
+      "sDom": '<"H"pl>rt<"F"pl><"clear">'
     });
 
     $("#deadpeople > tfoot input").keyup( function () {
     	/* Filter on the column (the index) of this element */
-    	oTable.fnFilter( this.value, $("tfoot input").index(this) );
+    	t.fnFilter( this.value, $("#deadpeople > tfoot input").index(this) );
     } );
     
   };
