@@ -4,6 +4,9 @@ import datetime
 from copy import copy
 
 DIR = sys.argv[1]
+f = open(os.path.join(DIR, '0000-00-00', 'index.html'))
+template = f.read()
+f.close()
 
 def realdates():
     min_birthday = datetime.date(1900,1,1)
@@ -21,13 +24,10 @@ def realdates():
         if birthday != min_birthday:
             params['prev'] = (birthday - oneday).strftime('%Y-%m-%d'),
  
-        yaml = '''---
-        birthday_words: '%(birthday_words)s'
-        birthday: %(birthday)s
----
-''' % params
-        f = open(os.path.join(DIR, birthday.strftime('%Y-%m-%d.yaml')), 'w')
-        f.write(yaml)
+        os.mkdir(os.path.join(DIR, birthday.strftime('%Y-%m-%d')))
+        f = open(os.path.join(DIR, birthday.strftime('%Y-%m-%d'), 'index.html'), 'w')
+        content = template.replace('______', params['birthday_words']).replace('0000-00-00', params['birthday'])
+        f.write(content)
         f.close()
         birthday += oneday
 
@@ -35,8 +35,8 @@ def fakedates():
     'Before 1900'
     os.system('''
 cd %s
-rename 1900 1800 1900*.yaml
-sed -i s/1900/1800/ 1800*.yaml
+rename 1900 1800 1900*
+sed -i s/1900/1800/ 1800*
 ''' % DIR)
 
 def main():

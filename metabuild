@@ -9,24 +9,24 @@ git pull
 tmp=$(mktemp -d)
 cp -R www $tmp
 
-# Generate yaml templates
-bin/write_birthday_yaml.py $tmp/www/content
-
-# Compile
+echo Compiling site
 (
   cd $tmp/www
   nanoc compile > /dev/null
 )
 
+echo Generating birthday pages
+bin/write_birthday_yaml.py $tmp/www/output
 
 # Mount S3
 mkdir $tmp/s3
 s3fs -o use_rrs=1 www.deadpeoplebornonmybirthday.com $tmp/s3
 
-# Copy application stuff
+echo Copying interface to S3
 cp -R $tmp/www/output/* $tmp/s3
 
-# Copy data over
+echo Copying data to S3
 cp data/people/19[0-3]*.json $tmp/s3/data/people
 
+echo umounting S3
 sudo umount $tmp/s3
