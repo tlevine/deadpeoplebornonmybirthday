@@ -17,11 +17,15 @@ cp -R www $tmp
   nanoc compile
 )
 
-# Copy data over
-cp data/people/*.json $tmp/www/output/data/people
 
 # Mount S3
 mkdir $tmp/s3
 s3fs -o use-rss=1 www.deadpeoplebornonmybirthday.com $tmp/s3
+
+# Copy application stuff
 cp -R $tmp/www/output/* $tmp/s3
+
+# Copy data over
+cp data/people/1800-*.json $tmp/s3/data/people
+
 sudo umount $tmp/s3
