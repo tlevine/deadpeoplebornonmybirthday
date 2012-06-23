@@ -26,7 +26,7 @@ def realdates():
         birthday: %(birthday)s
 ---
 ''' % params
-        f = open(os.path.join(DIR, birthday.strftime('%Y-%m-%d.yml')), 'w')
+        f = open(os.path.join(DIR, birthday.strftime('%Y-%m-%d.yaml')), 'w')
         f.write(yaml)
         f.close()
         birthday += oneday
@@ -35,8 +35,8 @@ def fakedates():
     'Before 1900'
     os.system('''
 cd %s
-rename 1900 1800 1900*.yml
-sed -i s/1900/1800/ 1800*.yml
+rename 1900 1800 1900*.yaml
+sed -i s/1900/1800/ 1800*.yaml
 ''' % DIR)
 
 def main():
