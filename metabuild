@@ -20,7 +20,7 @@ cp -R www $tmp
 
 # Mount S3
 mkdir $tmp/s3
-s3fs -o use-rrs=1 www.deadpeoplebornonmybirthday.com $tmp/s3
+s3fs -o use_rrs=1 www.deadpeoplebornonmybirthday.com $tmp/s3
 
 # Copy application stuff
 cp -R $tmp/www/output/* $tmp/s3
