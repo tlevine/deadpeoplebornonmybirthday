@@ -41,7 +41,6 @@ sed -i s/1900/1800/ 1800*/index.html
 
 def main():
     realdates()
-    thueohtoeu
     fakedates()
     realdates()
 

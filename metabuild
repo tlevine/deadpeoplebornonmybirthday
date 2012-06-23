@@ -26,7 +26,7 @@ echo Copying interface to S3
 cp -R $tmp/www/output/* $tmp/s3
 
 echo Copying data to S3
-cp data/people/19[0-3]*.json $tmp/s3/data/people
+cp data/people/*.json $tmp/s3/data/people
 
 echo umounting S3
 sudo umount $tmp/s3
