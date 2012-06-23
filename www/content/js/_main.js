@@ -132,7 +132,7 @@ window.death = (function(){
       $.get('/data/people/' + death.DATESTAMP + '.json', function(people_raw){
         var people = people_raw.map(function(person){
           var died = new Date(person.date_of_death);
-          person.died = died.toDateString();
+          person.died = died.strftime('%A, %B %d, %Y');
           person.age = Math.floor((died - new Date(death.DATESTAMP))/31536000000);
           person.date_of_death = died.getTime();
           return person;
@@ -158,14 +158,6 @@ window.death = (function(){
 $(function(){
   if ($('#age-plot').length > 0) {
     death.main();
-  var smallstart = ($(this).width() < 960);
-    $(window).resize(function(){
-      if ($(this).width() < 960 && smallstart) {
-        setTimeout(function(){
-          window.location.href=window.location.href
-       }, 500);
-      }
-    });
   } else {
     $('#submit').click(search.submit);
   }
