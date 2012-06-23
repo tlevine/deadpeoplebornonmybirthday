@@ -23,7 +23,13 @@ mkdir $tmp/s3
 s3fs -o use_rrs=1 www.deadpeoplebornonmybirthday.com $tmp/s3
 
 echo Copying interface to S3
-cp -R $tmp/www/output/* $tmp/s3
+for century in 18 19 20
+  do
+  for decade in `seq 0 9`
+    do
+    cp -R $tmp/www/output/$century$decade*.json $tmp/s3
+  done
+done
 
 echo Copying data to S3
 cp data/people/*.json $tmp/s3/data/people
