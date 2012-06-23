@@ -18,7 +18,7 @@ window.search = (function(){
       ) {
       $('#error').html('Select a date.');
     } else {
-      document.location = datestamp;
+      document.location = datestamp + '/';
     }
   };
   return search;
@@ -47,6 +47,11 @@ window.death = (function(){
     $('#deadpeople > tbody').html(rows.join(''));
     var t = $('#deadpeople').dataTable({
       "bJQueryUI": true,
+      "aoColumnDefs": [
+        { "bVisible": false, "aTargets": [5] },
+        { "iDataSort": 5, "aTargets": [3] },
+        { "iDataSort": 5, "aTargets": [4] }
+      ]
 //    "sDom": '<"H"p>rtl<"F"i><"clear">'
     });
   //$(window).resize(function(){
@@ -90,7 +95,7 @@ window.death = (function(){
     var thisyear = new Date().getFullYear();
     var max_age = thisyear - new Date(death.DATESTAMP).getFullYear();
 
-    // Allocate histogram and ticks.
+    // Allocate histogram.
     var ages_hist = [];
     var i = 0;
     while (i < max_age){
@@ -153,8 +158,9 @@ window.death = (function(){
 $(function(){
   if ($('#age-plot').length > 0) {
     death.main();
+  var smallstart = ($(this).width() < 960);
     $(window).resize(function(){
-      if ($(this).width() < 960) {     // or $(this).height() for height check
+      if ($(this).width() < 960 && smallstart) {
         setTimeout(function(){
           window.location.href=window.location.href
        }, 500);
