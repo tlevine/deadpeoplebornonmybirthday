@@ -44,13 +44,21 @@ compile '/img/*/' do
 end
 
 # Birthdays from 1800 to 2100
-compile '/[12][890][0-9][0-9]-*-*/' do
+# compile '/[12][890][0-9][0-9]-*-*/' do
+#   layout 'birthday'
+#   layout 'default'
+#   filter :cache_buster
+#   filter :relativize_paths, {:type => :html}
+# end
+
+# Birthday template
+compile '/0000-00-00/' do
   layout 'birthday'
   layout 'default'
   filter :cache_buster
   filter :relativize_paths, {:type => :html}
 end
-
+  
 
 compile '*' do
   if item.binary?

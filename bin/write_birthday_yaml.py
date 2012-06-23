@@ -24,7 +24,7 @@ def realdates():
         if birthday != min_birthday:
             params['prev'] = (birthday - oneday).strftime('%Y-%m-%d'),
  
-        os.mkdir(os.path.join(DIR, birthday.strftime('%Y-%m-%d')))
+        os.system('mkdir -p %s' % os.path.join(DIR, birthday.strftime('%Y-%m-%d')))
         f = open(os.path.join(DIR, birthday.strftime('%Y-%m-%d'), 'index.html'), 'w')
         content = template.replace('______', params['birthday_words']).replace('0000-00-00', params['birthday'])
         f.write(content)
@@ -36,11 +36,12 @@ def fakedates():
     os.system('''
 cd %s
 rename 1900 1800 1900*
-sed -i s/1900/1800/ 1800*
+sed -i s/1900/1800/ 1800*/index.html
 ''' % DIR)
 
 def main():
     realdates()
+    thueohtoeu
     fakedates()
     realdates()
 
