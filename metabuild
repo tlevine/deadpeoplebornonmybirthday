@@ -14,7 +14,7 @@ cp -R www $tmp
 # Compile
 (
   cd $tmp/www
-  nanoc compile
+  nanoc compile > /dev/null
 )
 
 
@@ -26,6 +26,6 @@ s3fs -o use_rrs=1 www.deadpeoplebornonmybirthday.com $tmp/s3
 cp -R $tmp/www/output/* $tmp/s3
 
 # Copy data over
-cp data/people/1800-*.json $tmp/s3/data/people
+cp data/people/19[0-3]*.json $tmp/s3/data/people
 
 sudo umount $tmp/s3
