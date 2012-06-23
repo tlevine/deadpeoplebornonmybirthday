@@ -19,3 +19,14 @@
       %th State
   %tbody
     -# This gets filled with javascript
+  %tfoot
+    %tr
+      %th{ :colspan => "7" }Filtering
+    %tr
+      %th <input placeholder="First" type="text" name="search_first" class="search_init" />
+      %th <input placeholder="Middle" type="text" name="search_middle" class="search_init" />
+      %th <input placeholder="Last" type="text" name="search_last" class="search_init" />
+      %th <input placeholder="Date" type="text" name="search_died" class="search_init" />
+      %th <input placeholder="Age" type="text" name="search_age" class="search_init" size="1" />
+      %th
+      %th <input placeholder="State" type="text" name="search_state" class="search_init" size="1" />

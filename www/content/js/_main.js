@@ -51,13 +51,15 @@ window.death = (function(){
         { "bVisible": false, "aTargets": [5] },
         { "iDataSort": 5, "aTargets": [3] },
         { "iDataSort": 5, "aTargets": [4] }
-      ]
+      ],
 //    "sDom": '<"H"p>rtl<"F"i><"clear">'
     });
-  //$(window).resize(function(){
-  //  t.fnReloadAjax();
-  //  $('#deadpeople').attr('style', '');
-  //});
+
+    $("#deadpeople > tfoot input").keyup( function () {
+    	/* Filter on the column (the index) of this element */
+    	oTable.fnFilter( this.value, $("tfoot input").index(this) );
+    } );
+    
   };
 
   // Table row template
