@@ -10,6 +10,7 @@ tmp=$(mktemp -d)
 cp -R www $tmp
 
 # Generate yaml templates
+bin/write_birthday_yaml.py $tmp/www/content
 
 # Compile
 (
