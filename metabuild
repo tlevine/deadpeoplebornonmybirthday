@@ -1,6 +1,11 @@
 #!/bin/sh
 # Avoid committing all of the data to the repository.
 
+set -e
+
+# Update
+git pull
+
 tmp=$(mktemp -d)
 cp -R www $tmp
 
@@ -14,3 +19,9 @@ cp -R www $tmp
 
 # Copy data over
 cp data/people/*.json $tmp/www/output/data/people
+
+# Mount S3
+mkdir $tmp/s3
+s3fs -o use-rss=1 www.deadpeoplebornonmybirthday.com $tmp/s3
+cp -R $tmp/www/output/* $tmp/s3
+sudo umount $tmp/s3
