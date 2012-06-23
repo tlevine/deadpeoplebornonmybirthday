@@ -24,7 +24,7 @@ def people(birthday_date):
             })
         except:
             f = open('failed_persons', 'a')
-            f.write(person['ssn'])
+            f.write(person['ssn'] + '\n')
             f.close()
     return out
 
