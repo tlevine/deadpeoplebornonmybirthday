@@ -36,6 +36,7 @@ def fakedates():
     os.system('''
 cd %s
 pwd
+ls|head
 rm -R 18*
 rename 19 18 19*
 sed -i s/19\([0-9][0-9]\)/18\1/g 18*/index.html

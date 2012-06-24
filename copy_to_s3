@@ -13,6 +13,6 @@ for century in 18 19 20
     do
     echo Copying the $century${decade}0s
     cp -R $LOCAL/www/output/$century$decade* $S3
-    cp $LOCAL/data/people/$century$decade*.json $S3/data/people
+#   cp $LOCAL/data/people/$century$decade*.json $S3/data/people
   done
 done
