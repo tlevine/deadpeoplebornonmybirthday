@@ -1,0 +1,36 @@
+%h2#plot-title Age at death of dead Americans born on ______
+
+#age-plot
+  A plot is loading
+-##state-plot
+  A plot is loading
+
+%h2#table-title More about the dead Americans born on ______
+
+%table#deadpeople.dataTable
+  %thead
+    %tr
+      %th First
+      %th Middle
+      %th Last
+      %th Died
+      %th Age
+      %th.date_of_death Date of death
+      %th State
+  %tbody
+    -# This gets filled with javascript
+  %tfoot
+    -#%tr
+      %th{ :colspan => "7" }Filtering
+    %tr
+      %th <input placeholder="First name" type="text" name="search_first" class="search_init" size="1" />
+      %th <input placeholder="Middle initials" type="text" name="search_middle" class="search_init" size="1" />
+      %th <input placeholder="Last name" type="text" name="search_last" class="search_init" size="1" />
+      %th <input placeholder="Date of death" type="text" name="search_died" class="search_init" size="1" />
+      %th <input placeholder="Age at death" type="text" name="search_age" class="search_init" size="1" />
+      %th
+      %th <input placeholder="State" type="text" name="search_state" class="search_init" size="1" />
+
+#pagination
+  #prev #{@item[:prev]}
+  #next #{@item[:next]}
