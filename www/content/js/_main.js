@@ -27,15 +27,6 @@ window.search = (function(){
 window.death = (function(){
   var death = {};
 
-  // Get datestamp from URL
-  death.DATESTAMP = document.location.search.replace(
-      /.*(\d{4}-\d{2}-\d{2}).*/,
-      function(junk, datestamp){return datestamp}
-    );
-  if (death.DATESTAMP===document.URL){
-    death.DATESTAMP = null
-  };
-
   death.table_keys = [
     'first', 'middle', 'last', 'died', 'age', 'date_of_death', 'state'
   ];
@@ -125,6 +116,15 @@ window.death = (function(){
   };
 
   death.main = function(){
+    // Get datestamp from URL
+    death.DATESTAMP = document.location.search.replace(
+        /.*(\d{4}-\d{2}-\d{2}).*/,
+        function(junk, datestamp){return datestamp}
+      );
+    if (death.DATESTAMP===document.URL){
+      death.DATESTAMP = null
+    };
+
     if (death.DATESTAMP[1] == '8'){
       var d = JSON.parse(JSON.stringify(death.DATESTAMP));
       d[1] = '9'
