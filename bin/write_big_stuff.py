@@ -1,3 +1,5 @@
+#!/usr/bin/env python2
+
 import sys
 from boto.s3.connection import S3Connection
 from boto.s3.key import Key
@@ -16,6 +18,7 @@ def upload(birthday, content)
     k=Key(b)
     k.key=birthday
     k.content_type = 'text/html'
+    k.set_reduced_redundancy()
     k.set_contents_from_string(content)
 
 def main():
