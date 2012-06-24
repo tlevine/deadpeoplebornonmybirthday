@@ -102,6 +102,7 @@ window.death = (function(){
     // Only do something if there is a datestamp.
     if (datestamp != null){
       $.get('data/' + death.DATESTAMP + '.json', function(people_raw){
+        window.p=people_raw;
         var people = people_raw.map(function(person){
           var died = new Date(person.date_of_death);
           person.died = died.strftime('%A, %B %d, %Y');
