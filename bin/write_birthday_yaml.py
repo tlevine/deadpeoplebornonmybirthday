@@ -38,7 +38,7 @@ cd %s
 pwd
 rm -R 18*
 rename 19 18 19*
-sed -i s/19\([0-9][0-9]\)/18\1/ 18*/index.html
+sed -i s/19\([0-9][0-9]\)/18\1/g 18*/index.html
 ''' % DIR)
 
 def main():
