@@ -28,7 +28,7 @@ window.death = (function(){
   var death = {};
 
   // Get datestamp from URL
-  death.DATESTAMP = document.URL.replace(
+  death.DATESTAMP = document.location.search.replace(
       /.*(\d{4}-\d{2}-\d{2}).*/,
       function(junk, datestamp){return datestamp}
     );
@@ -131,7 +131,7 @@ window.death = (function(){
   death.render_dead_people = function(datestamp){
     // Only do something if there is a datestamp.
     if (datestamp != null){
-      $.get('/data/people/' + death.DATESTAMP + '.json', function(people_raw){
+      $.get('data/' + death.DATESTAMP + '.json', function(people_raw){
         var people = people_raw.map(function(person){
           var died = new Date(person.date_of_death);
           person.died = died.strftime('%A, %B %d, %Y');
@@ -151,6 +151,14 @@ window.death = (function(){
   };
 
   death.main = function(){
+    if (death.DATESTAMP[1] == '8'){
+      var d = JSON.parse(JSON.stringify(death.DATESTAMP));
+      d[1] = '9'
+      birthday_words = new Date(d).strftime('%A, %B %d, 18%y');
+    } else {
+      birthday_words = new Date(death.DATESTAMP).strftime('%A, %B %d, %Y');
+    }
+    $('.birthday-words').text(birthday_words);
     death.render_dead_people(death.DATESTAMP);
   };
 

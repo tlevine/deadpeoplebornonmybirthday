@@ -52,7 +52,7 @@ end
 # end
 
 # Birthday template
-compile '/0000-00-00/' do
+compile '/!/' do
   layout 'birthday'
   layout 'default'
   filter :cache_buster
@@ -105,7 +105,7 @@ route '/js/*/' do
   item.identifier.chop + fp + '.js'
 end
 
-route '/0000-00-00/' do
+route '/!/' do
   item.identifier.chop
 end
 
