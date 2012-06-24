@@ -105,18 +105,19 @@ window.death = (function(){
         url: 'data/' + death.DATESTAMP + '.json',
         dataType: 'json',
         success: function(people_raw){
-        window.p=people_raw;
-        var people = people_raw.map(function(person){
-          var died = new Date(person.date_of_death);
-          person.died = died.strftime('%A, %B %d, %Y');
-          person.age = Math.floor((died - new Date(death.DATESTAMP))/31536000000);
-          person.date_of_death = died.getTime();
-          return person;
-        });
-        death.table(people);
-        death.ageplot(people);
-      }
-    });
+          window.p=people_raw;
+          var people = people_raw.map(function(person){
+            var died = new Date(person.date_of_death);
+            person.died = died.strftime('%A, %B %d, %Y');
+            person.age = Math.floor((died - new Date(death.DATESTAMP))/31536000000);
+            person.date_of_death = died.getTime();
+            return person;
+          });
+          death.table(people);
+          death.ageplot(people);
+        }
+      });
+    };
   };
 
   death.main = function(){
