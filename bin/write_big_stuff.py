@@ -18,7 +18,7 @@ def upload(birthday, content)
     k.content_type = 'text/html'
     k.set_contents_from_string(content)
 
-def realdates():
+def main():
     min_birthday = datetime.date(1900,1,1)
     birthday = copy(min_birthday)
     max_birthday = datetime.date.today()
@@ -50,3 +50,5 @@ def realdates():
             )
             upload(re.sub(r'19', '18', params['birthday']), content18)
             assert params['birthday'] in content18
+
+main()
