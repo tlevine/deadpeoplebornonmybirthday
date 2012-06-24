@@ -115,8 +115,8 @@ window.death = (function(){
         });
         death.table(people);
         death.ageplot(people);
-      });
-    };
+      }
+    });
   };
 
   death.main = function(){
