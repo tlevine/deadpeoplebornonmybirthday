@@ -101,8 +101,7 @@ window.death = (function(){
   death.render_dead_people = function(datestamp){
     // Only do something if there is a datestamp.
     if (datestamp != null){
-      $.get({
-        url: 'data/' + death.DATESTAMP + '.json',
+      $.get('data/' + death.DATESTAMP + '.json', {
         dataType: 'json',
         success: function(people_raw){
           window.p=people_raw;
