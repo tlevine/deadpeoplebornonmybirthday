@@ -35,7 +35,7 @@ def fakedates():
     'Before 1900'
     os.system('''
 cd %s
-rename 1900 1800 1900*
+rename ^19 ^18 19*
 sed -i s/19\([0-9][0-9]\)/18\1/ 1800*/index.html
 ''' % DIR)
 
