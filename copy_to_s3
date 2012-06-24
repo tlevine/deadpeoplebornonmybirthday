@@ -1,7 +1,8 @@
 #!/bin/sh
 # Avoid committing all of the data to the repository.
 
-S3=$1
+LOCAL=$1
+S3=$2
 
 set -e
 
@@ -10,7 +11,8 @@ for century in 18 19 20
   do
   for decade in `seq 0 9`
     do
+    echo Copying the $century${decade}0s
     #cp data/people/$century$decade*.json $S3
-    cp -R www/output/$century$decade* $S3
+    cp -R $LOCAL/www/output/$century$decade* $S3
   done
 done
