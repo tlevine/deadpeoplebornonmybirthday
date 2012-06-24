@@ -4,8 +4,8 @@ from boto.s3.key import Key
 import datetime
 from copy import copy
 
-DIR = sys.argv[1]
-f = open(os.path.join(DIR, '0000-00-00', 'index.html'))
+FILE00 = sys.argv[1]
+f = open(FILE00)
 template = f.read()
 f.close()
 
