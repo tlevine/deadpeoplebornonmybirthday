@@ -10,6 +10,7 @@ for century in 18 19 20
   do
   for decade in `seq 0 9`
     do
-    cp data/people/$century$decade*.json $S3
+    #cp data/people/$century$decade*.json $S3
+    cp -R www/output/$century$decade* $S3
   done
 done
