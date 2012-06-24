@@ -27,6 +27,7 @@ for century in 18 19 20
   do
   for decade in `seq 0 9`
     do
+    echo Copying the $century${decade}s
     cp $tmp/www/output/$century$decade* $tmp/s3
 #   cp data/people/$century$decade*.json $tmp/s3/data/people
   done
