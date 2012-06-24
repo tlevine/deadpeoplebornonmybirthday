@@ -18,6 +18,7 @@ def upload(birthday, content)
     k=Key(b)
     k.key=birthday
     k.content_type = 'text/html'
+    k.set_reduced_redundancy()
     k.set_contents_from_string(content)
 
 def main():
