@@ -102,18 +102,17 @@ window.death = (function(){
     // Only do something if there is a datestamp.
     if (datestamp != null){
       $.get('data/' + death.DATESTAMP + '.json', function(people_text){
-          window.p=people_text;
-          var people_raw = JSON.parse(people_text);
-          var people = people_raw.map(function(person){
-            var died = new Date(person.date_of_death);
-            person.died = died.strftime('%A, %B %d, %Y');
-            person.age = Math.floor((died - new Date(death.DATESTAMP))/31536000000);
-            person.date_of_death = died.getTime();
-            return person;
-          });
-          death.table(people);
-          death.ageplot(people);
-        }
+        window.p=people_text;
+        var people_raw = JSON.parse(people_text);
+        var people = people_raw.map(function(person){
+          var died = new Date(person.date_of_death);
+          person.died = died.strftime('%A, %B %d, %Y');
+          person.age = Math.floor((died - new Date(death.DATESTAMP))/31536000000);
+          person.date_of_death = died.getTime();
+          return person;
+        });
+        death.table(people);
+        death.ageplot(people);
       });
     };
   };
