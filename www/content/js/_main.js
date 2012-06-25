@@ -123,9 +123,6 @@ window.death = (function(){
         /.*(\d{4}-\d{2}-\d{2}).*/,
         function(junk, datestamp){return datestamp}
       );
-    if (death.DATESTAMP===document.URL){
-      death.DATESTAMP = null
-    };
 
     if (death.DATESTAMP[1] == '8'){
       var d = JSON.parse(JSON.stringify(death.DATESTAMP));
@@ -141,10 +138,11 @@ window.death = (function(){
   return death;
 })();
 
+
 $(function(){
-  if ($('#age-plot').length > 0) {
-    death.main();
-  } else {
+  if (document.location.pathname == '/'){
     $('#submit').click(search.submit);
+  } else {
+    death.main();
   }
 });
