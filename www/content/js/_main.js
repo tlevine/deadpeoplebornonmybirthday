@@ -77,6 +77,7 @@ window.death = (function(){
 
     // Create it.
     i = 0;
+    log(ages);
     while (i < ages.length){
      
       ages_hist[ages[i]][1]++;
@@ -127,8 +128,10 @@ window.death = (function(){
       death.DATESTAMP = null
     };
 
+    log(death.DATESTAMP);
     if (death.DATESTAMP[1] == '8'){
       var d = JSON.parse(JSON.stringify(death.DATESTAMP));
+      log(d);
       d[1] = '9'
       birthday_words = new Date(d).strftime('%A, %B %d, 18%y');
     } else {
