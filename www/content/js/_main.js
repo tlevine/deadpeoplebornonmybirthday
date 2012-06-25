@@ -18,7 +18,7 @@ window.search = (function(){
       ) {
       $('#error').html('Select a date.');
     } else {
-      document.location = datestamp + '/';
+      document.location = '!?' + datestamp;
     }
   };
   return search;
