@@ -34,7 +34,8 @@ window.death = (function(){
   // Table-writer
   death.table = function(people){
     var rows = people.map(function(person){
-      return sprintf(death.table_row_template, person)});
+      return sprintf(death.table_row_template, person)
+    });
     $('#deadpeople > tbody').html(rows.join(''));
     var t = $('#deadpeople').dataTable({
       "bJQueryUI": true,
@@ -46,11 +47,12 @@ window.death = (function(){
       "sDom": '<"H"pl>rt<"F"pl><"clear">'
     });
 
+    log(1)
     $("#deadpeople > tfoot input").keyup( function () {
     	/* Filter on the column (the index) of this element */
     	t.fnFilter( this.value, $("#deadpeople > tfoot input").index(this) );
-    } );
-    
+    log(2)
+    });
   };
 
   // Table row template
@@ -101,10 +103,11 @@ window.death = (function(){
   // Render the page
   death.render_dead_people = function(datestamp){
     // Only do something if there is a datestamp.
+    //log(datestamp)
     if (datestamp != null){
-      $.get('data/' + death.DATESTAMP + '.json', function(people_text){
-        window.p=people_text;
-        var people_raw = JSON.parse(people_text);
+      $.get('data/' + death.DATESTAMP + '.json', function(people_raw){
+        //log(people_text);
+        //log(people_raw);
         var people = people_raw.map(function(person){
           var died = new Date(person.date_of_death);
           person.died = died.strftime('%A, %B %d, %Y');
@@ -124,9 +127,6 @@ window.death = (function(){
         /.*(\d{4}-\d{2}-\d{2}).*/,
         function(junk, datestamp){return datestamp}
       );
-    if (death.DATESTAMP===document.URL){
-      death.DATESTAMP = null
-    };
 
     log(death.DATESTAMP);
     if (death.DATESTAMP[1] == '8'){
@@ -144,10 +144,11 @@ window.death = (function(){
   return death;
 })();
 
+
 $(function(){
-  if ($('#age-plot').length > 0) {
-    death.main();
-  } else {
+  if (document.location.pathname == '/'){
     $('#submit').click(search.submit);
+  } else {
+    death.main();
   }
 });
