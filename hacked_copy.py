@@ -13,21 +13,23 @@ b = conn.get_bucket('www.deadpeoplebornonmybirthday.com')
 os.system('rm /tmp/s3_copy_log.sqlite')
 dt = dumptruck.DumpTruck(dbname = '/tmp/s3_copy_log.sqlite')
 
+HEADERS = {
+    'Content-Type': 'application/json',
+    'Content-Encoding': 'gzip',
+}
+
 def upload(filename, birthday):
     # Test that it's a date.
     datetime.date(*map(int, birthday.replace('18', '19').split('-')))
 
     k=Key(b)
     k.key=os.path.join('data', 'bornon', birthday + '.json.gz')
-#   k.content_type = 'application/json'
-#   k.content_encoding = 'gzip'
     k.storage_class='REDUCED_REDUNDANCY'
-    k.set_metadata('Content-Type', 'application/json')
-    k.set_metadata('Content-Encoding', 'gzip')
 
-    content = open(filename)
-    k.set_contents_from_file(content)
-    content.close()
+    f = open(filename)
+    key.set_contents_from_string(f.read(), HEADERS, replace=True)
+    f.close()
+
     k.close()
 
 def main():
@@ -38,4 +40,5 @@ def main():
         dt.insert({'filename': filename, 'birthday': birthday}, 'finished')
         break
 
-main()
+#main()
+upload('data/people/2000-01-01.json.gz', '2000-01-01')
