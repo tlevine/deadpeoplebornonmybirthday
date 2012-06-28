@@ -105,7 +105,7 @@ window.death = (function(){
     // Only do something if there is a datestamp.
     //log(datestamp)
     if (datestamp != null){
-      $.get('data/' + death.DATESTAMP + '.json', function(people_raw){
+      $.get('data/bornon/' + death.DATESTAMP + '.json.gz', function(people_raw){
         //log(people_text);
         //log(people_raw);
         var people = people_raw.map(function(person){
