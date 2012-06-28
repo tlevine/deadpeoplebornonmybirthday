@@ -10,12 +10,13 @@ from boto.s3.key import Key
 conn = S3Connection(sys.argv[1], sys.argv[2])
 b = conn.get_bucket('www.deadpeoplebornonmybirthday.com')
 
-os.system('rm /tmp/s3_copy_log.sqlite')
+#os.system('rm /tmp/s3_copy_log.sqlite')
 dt = dumptruck.DumpTruck(dbname = '/tmp/s3_copy_log.sqlite')
 
 HEADERS = {
     'Content-Type': 'application/json',
     'Content-Encoding': 'gzip',
+    'Cache-Control': 'max-age=1234567890',
 }
 
 def upload(filename, birthday):
@@ -27,7 +28,7 @@ def upload(filename, birthday):
     k.storage_class='REDUCED_REDUNDANCY'
 
     f = open(filename)
-    key.set_contents_from_string(f.read(), HEADERS, replace=True)
+    k.set_contents_from_string(f.read(), HEADERS, replace=True)
     f.close()
 
     k.close()
@@ -36,9 +37,11 @@ def main():
     for jsongz in os.listdir(os.path.join('data', 'people')):
         filename = os.path.join('data', 'people', jsongz)
         birthday = jsongz.replace('.json.gz', '')
-        upload(filename, birthday)
-        dt.insert({'filename': filename, 'birthday': birthday}, 'finished')
-        break
+        if jsongz == '.gitignore':
+            continue
+        elif dt.execute('select count(birthday) as c from finished where birthday = ?', [birthday])[0]['c'] == 0:
+            upload(filename, birthday)
+            dt.insert({'filename': filename, 'birthday': birthday}, 'finished')
 
-#main()
-upload('data/people/2000-01-01.json.gz', '2000-01-01')
+main()
+#upload('data/people/2000-01-01.json.gz', '2000-01-02')
