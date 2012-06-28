@@ -17,7 +17,7 @@ def upload(filename, birthday):
     k.key=birthday
     k.content_type = 'text/html'
     k.content_encoding = 'gzip'
-    k.set_reduced_redundancy()
+    k.storage_class='REDUCED_REDUNDANCY'
 
     content = open(filename)
     k.set_contents_from_file(content)
