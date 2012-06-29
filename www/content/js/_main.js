@@ -105,9 +105,14 @@ window.death = (function(){
     if (datestamp != null){
       $.get('data/bornon/' + death.DATESTAMP + '.json.gz', function(people_raw){
         // We expect a string.
-        log(typeof(people_raw));
+        // log(typeof(people_raw));
 
-        var people = JSON.parse(people_raw).map(function(person){
+        if (typeof(people_raw) === 'string'){
+          // The nanoc server returns the wrong type.
+          people_raw = JSON.parse(people_raw);
+        }
+
+        var people = people_raw.map(function(person){
           var died = new Date(person.date_of_death);
           person.died = died.strftime('%A, %B %d, %Y');
           person.age = Math.floor((died - new Date(death.DATESTAMP))/31536000000);
