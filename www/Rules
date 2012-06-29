@@ -53,7 +53,7 @@ end
 
 # Birthday template
 compile '/!/' do
-  layout 'birthday'
+  filter :haml
   layout 'default'
   filter :cache_buster
   filter :relativize_paths, {:type => :html}

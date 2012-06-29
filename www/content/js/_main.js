@@ -137,7 +137,7 @@ window.death = (function(){
       birthday_words = new Date(death.DATESTAMP).strftime('%A, %B %d, %Y');
     }
     log(birthday_words);
-    $('.birthday-words').append(birthday_words);
+    $('.birthday-words').append(' ' + birthday_words);
     death.render_dead_people(death.DATESTAMP);
   };
 
