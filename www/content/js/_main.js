@@ -47,11 +47,9 @@ window.death = (function(){
       "sDom": '<"H"pl>rt<"F"pl><"clear">'
     });
 
-    log(1)
     $("#deadpeople > tfoot input").keyup( function () {
     	/* Filter on the column (the index) of this element */
     	t.fnFilter( this.value, $("#deadpeople > tfoot input").index(this) );
-    log(2)
     });
   };
 
@@ -106,9 +104,10 @@ window.death = (function(){
     //log(datestamp)
     if (datestamp != null){
       $.get('data/bornon/' + death.DATESTAMP + '.json.gz', function(people_raw){
-        //log(people_text);
-        //log(people_raw);
-        var people = people_raw.map(function(person){
+        // We expect a string.
+        log(typeof(people_raw));
+
+        var people = JSON.parse(people_raw).map(function(person){
           var died = new Date(person.date_of_death);
           person.died = died.strftime('%A, %B %d, %Y');
           person.age = Math.floor((died - new Date(death.DATESTAMP))/31536000000);
@@ -137,7 +136,8 @@ window.death = (function(){
     } else {
       birthday_words = new Date(death.DATESTAMP).strftime('%A, %B %d, %Y');
     }
-    $('.birthday-words').text(birthday_words);
+    log(birthday_words);
+    $('.birthday-words').append(birthday_words);
     death.render_dead_people(death.DATESTAMP);
   };
 
