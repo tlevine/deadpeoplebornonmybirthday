@@ -44,7 +44,7 @@ window.death = (function(){
         { "iDataSort": 5, "aTargets": [3] },
         { "iDataSort": 5, "aTargets": [4] }
       ],
-      "sDom": '<"H"pl>rt<"F"pl><"clear">'
+      "sDom": '<"H"pl>rt<"F"plif><"clear">'
     });
 
     $("#deadpeople > tfoot input").keyup( function () {
