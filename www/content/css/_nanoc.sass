@@ -1,4 +1,4 @@
-$blue: #1C94C4
+$grey: #444
 
 //.date_of_death
   display: none
@@ -116,7 +116,7 @@ footer
   padding: 0
   width: 5 * 1.5em
   color: #EEE
-  background-color: #444
+  background-color: $grey
   float: right
   list-style: none
   li
@@ -126,17 +126,25 @@ footer
     padding: 0.25em
     text-align: center
 
-#prev
+.prev
   float: left
  
-#next
+.next
   float: right
 
-#tomorrow, #yesterday
+.tomorrow, .yesterday
   margin:
     left: 2em
     right: 2em
 
-#next, #prev
-  color: $blue
+.next, .prev
+  color: $grey
   font-weight: 700
+
+.pagination
+  height: 1.5em
+  margin:
+    top: 0.5em
+    bottom: 0.5em
+  a:hover
+    text-decoration: underline

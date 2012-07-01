@@ -139,10 +139,10 @@ window.death = (function(){
       log('Pagination for dates into the 1800s isn\'t supported yet.');
 
       // Clear them.
-      $('#yesterday').text('');
-      $('#tomorrow').text('');
-      $('#lastyear').text('');
-      $('#nextyear').text('');
+      $('.yesterday').text('');
+      $('.tomorrow').text('');
+      $('.lastyear').text('');
+      $('.nextyear').text('');
 
     } else {
       birthday['set' + func](birthday['get' + func]() + difference);
@@ -170,10 +170,10 @@ window.death = (function(){
     }
 
     // Pagination
-    death.pagination('#yesterday', 'Date', -1);
-    death.pagination('#tomorrow', 'Date', 1);
-    death.pagination('#lastyear', 'Year', -1);
-    death.pagination('#nextyear', 'Year', 1);
+    death.pagination('.yesterday', 'Date', -1);
+    death.pagination('.tomorrow', 'Date', 1);
+    death.pagination('.lastyear', 'Year', -1);
+    death.pagination('.nextyear', 'Year', 1);
 
     log(birthday_words);
     $('.birthday-words').append(' ' + birthday_words);

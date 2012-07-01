@@ -1,3 +1,12 @@
+.pagination
+  .prev
+    %a.lastyear Last year
+    %a.yesterday Yesterday
+
+  .next
+    %a.tomorrow Tomorrow
+    %a.nextyear Next year
+
 %h2#plot-title.birthday-words Age at death of dead Americans born on
 
 #age-plot A plot is loading
@@ -31,10 +40,11 @@
       %th
       %th <input placeholder="State" type="text" name="search_state" class="search_init" size="1" />
 
-#prev
-  %a#lastyear Last year
-  %a#yesterday Yesterday
+.pagination
+  .prev
+    %a.lastyear Last year
+    %a.yesterday Yesterday
 
-#next
-  %a#tomorrow Tomorrow
-  %a#nextyear Next year
+  .next
+    %a.tomorrow Tomorrow
+    %a.nextyear Next year
