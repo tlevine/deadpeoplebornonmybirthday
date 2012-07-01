@@ -130,12 +130,12 @@ window.death = (function(){
       throw 'func must be one of "Date" or "Year".';
     }
 
-    if ( Math.abs(diference) != 1 ) {
+    if ( Math.abs(difference) != 1 ) {
       throw 'difference must be one of -1 or 1.';
     }
 
     var birthday = new Date(death.DATESTAMP);
-    if (birthday > new Date('1900-02-02')){
+    if (birthday < new Date('1900-02-02')){
       log('Pagination for dates into the 1800s isn\'t supported yet.');
 
       // Clear them.
@@ -146,7 +146,7 @@ window.death = (function(){
 
     } else {
       birthday['set' + func](birthday['get' + func]() + difference);
-      $(id).attr('href', birthday.strftime('!?%Y-%m%d'));
+      $(id).attr('href', birthday.strftime('!?%Y-%m-%d'));
     }
   };
 
