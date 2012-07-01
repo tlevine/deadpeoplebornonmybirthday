@@ -125,6 +125,31 @@ window.death = (function(){
     };
   };
 
+  death.pagination = function(id, func, difference) {
+    if (!(func in {'Date': null, 'Year': null})) {
+      throw 'func must be one of "Date" or "Year".';
+    }
+
+    if ( Math.abs(diference) != 1 ) {
+      throw 'difference must be one of -1 or 1.';
+    }
+
+    var birthday = new Date(death.DATESTAMP);
+    if (birthday > new Date('1900-02-02')){
+      log('Pagination for dates into the 1800s isn\'t supported yet.');
+
+      // Clear them.
+      $('#yesterday').text('');
+      $('#tomorrow').text('');
+      $('#lastyear').text('');
+      $('#nextyear').text('');
+
+    } else {
+      birthday['set' + func](birthday['get' + func]() + difference);
+      $(id).attr('href', birthday.strftime('!?%Y-%m%d'));
+    }
+  };
+
   death.main = function(){
     // Get datestamp from URL
     death.DATESTAMP = document.location.search.replace(
@@ -132,6 +157,7 @@ window.death = (function(){
         function(junk, datestamp){return datestamp}
       );
 
+    // Word dates
     log(death.DATESTAMP);
     if (death.DATESTAMP[1] == '8'){
       var d = JSON.parse(JSON.stringify(death.DATESTAMP));
@@ -139,8 +165,16 @@ window.death = (function(){
       d[1] = '9'
       birthday_words = new Date(d).strftime('%A, %B %d, 18%y');
     } else {
-      birthday_words = new Date(death.DATESTAMP).strftime('%A, %B %d, %Y');
+      var b = new Date(death.DATESTAMP);
+      birthday_words = b.strftime('%A, %B %d, %Y');
     }
+
+    // Pagination
+    death.pagination('#yesterday', 'Date', -1);
+    death.pagination('#tomorrow', 'Date', 1);
+    death.pagination('#lastyear', 'Year', -1);
+    death.pagination('#nextyear', 'Year', 1);
+
     log(birthday_words);
     $('.birthday-words').append(' ' + birthday_words);
     death.render_dead_people(death.DATESTAMP);
